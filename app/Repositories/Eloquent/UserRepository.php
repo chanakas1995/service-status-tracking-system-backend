@@ -27,4 +27,15 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
     {
         return User::where('username', $username)->firstOrFail();
     }
+
+    /**
+     * @return Collection
+     */
+    public function index()
+    {
+        $indexQuery = $this->model->with('roles')->whereHas(('roles'), function ($query) {
+            return $query->whereNotIn('name', ["Super Admin", "Employee", "Customer"]);
+        });
+        return $this->paginate($indexQuery);
+    }
 }

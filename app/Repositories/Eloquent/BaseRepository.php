@@ -32,11 +32,11 @@ class BaseRepository implements BaseRepositoryInterface
     }
 
     /**
-     * @param $uuid
+     * @param $id
      */
-    public function find($uuid)
+    public function find($id)
     {
-        return $this->model->findOrFail($uuid);
+        return $this->model->findOrFail($id);
     }
 
     /**
@@ -57,23 +57,23 @@ class BaseRepository implements BaseRepositoryInterface
     }
 
     /**
-     * @param array $uuid
+     * @param array $id
      * @param array $attributes
      */
-    public function update($uuid, array $attributes)
+    public function update($id, array $attributes)
     {
-        $data = $this->model->findOrFail($uuid);
+        $data = $this->model->findOrFail($id);
         $data->update($attributes);
         return $data;
     }
 
     /**
-     * @param $uuid
+     * @param $id
      */
-    public function delete($uuid)
+    public function delete($id)
     {
-        $data = $this->model->findOrFail($uuid);
-        return $data->delete($uuid);
+        $data = $this->model->findOrFail($id);
+        return $data->delete($id);
     }
 
     protected function paginate($searchQuery)
