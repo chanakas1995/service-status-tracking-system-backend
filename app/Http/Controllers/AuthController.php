@@ -29,7 +29,7 @@ class AuthController extends Controller
         $this->userRepository->findByUsername($request->get('username'));
         if (Auth::attempt($request->validated())) {
             return ResponseHelper::success("app.responses.loginSuccess", [
-                "user" => new UserResource(Auth::user()),
+                "user" => new UserResource(Auth::user()->load('roles', 'roles.permissions')),
                 "token" => Auth::user()->createToken("Api Token")->plainTextToken,
             ]);
         } else {
@@ -45,6 +45,6 @@ class AuthController extends Controller
 
     public function getUser(Request $request)
     {
-        return ResponseHelper::findSuccess("user", new UserResource(Auth::user()));
+        return ResponseHelper::findSuccess("user", new UserResource(Auth::user()->load('roles', 'roles.permissions')));
     }
 }

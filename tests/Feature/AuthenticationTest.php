@@ -3,6 +3,8 @@
 namespace Tests\Feature;
 
 use App\Models\User;
+use Database\Seeders\PermissionSeeder;
+use Database\Seeders\RoleSeeder;
 use Database\Seeders\UserSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -17,12 +19,17 @@ class AuthenticationTest extends TestCase
 
     public function test_authenticate_user_without_username_or_password()
     {
+        $this->seed(PermissionSeeder::class);
+        $this->seed(RoleSeeder::class);
+        $this->seed(UserSeeder::class);
         $response = $this->postJson('api/auth/login', []);
         $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
     }
 
     public function test_authenticate_user_with_invalid_username()
     {
+        $this->seed(PermissionSeeder::class);
+        $this->seed(RoleSeeder::class);
         $this->seed(UserSeeder::class);
         $credentials = ['username' => 'user', 'password' => 'user'];
         $response = $this->postJson('/api/auth/login', $credentials);
@@ -31,6 +38,8 @@ class AuthenticationTest extends TestCase
 
     public function test_authenticate_user_with_invalid_password()
     {
+        $this->seed(PermissionSeeder::class);
+        $this->seed(RoleSeeder::class);
         $this->seed(UserSeeder::class);
         $credentials = ['username' => 'superadmin', 'password' => 'user'];
         $response = $this->postJson('/api/auth/login', $credentials);
@@ -39,6 +48,8 @@ class AuthenticationTest extends TestCase
 
     public function test_authenticate_user_with_valid_username_or_password()
     {
+        $this->seed(PermissionSeeder::class);
+        $this->seed(RoleSeeder::class);
         $this->seed(UserSeeder::class);
         $credentials = ['username' => 'superadmin', 'password' => 'password'];
         $response = $this->postJson('/api/auth/login', $credentials);
@@ -47,6 +58,8 @@ class AuthenticationTest extends TestCase
 
     public function test_get_user_without_authentication()
     {
+        $this->seed(PermissionSeeder::class);
+        $this->seed(RoleSeeder::class);
         $this->seed(UserSeeder::class);
         $response = $this->json('GET', '/api/auth/user', [], ['accept' => 'application/json']);
         $response->assertStatus(Response::HTTP_UNAUTHORIZED);
@@ -54,6 +67,8 @@ class AuthenticationTest extends TestCase
 
     public function test_get_user_with_authentication()
     {
+        $this->seed(PermissionSeeder::class);
+        $this->seed(RoleSeeder::class);
         $this->seed(UserSeeder::class);
         $this->be(User::first());
         $response = $this->get('/api/auth/user');

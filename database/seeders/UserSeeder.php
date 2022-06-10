@@ -15,15 +15,16 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        User::create([
-            'first_name' => "Super",
-            'last_name' => "Admin",
+        $user = User::create([
+            'name' => "Super Admin",
             'username' => "superadmin",
             'email' => "admin@example.com",
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'remember_token' => Str::random(10),
-            'is_admin' => 2,
+            'remember_token' => Str::random(10)
         ]);
+        $user->assignRole("Super Admin");
+
+        User::factory(10)->create();
     }
 }

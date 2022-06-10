@@ -28,20 +28,20 @@ interface BaseRepositoryInterface
     public function store(array $attributes);
 
     /**
-     * @param $uuid
+     * @param $id
      * @return Model
      */
-    public function find($uuid);
+    public function find($id);
 
     /**
-     * @param array $uuid
+     * @param array $id
      * @param array $attributes
      * @return Model
      */
-    public function update($uuid, array $attributes);
+    public function update($id, array $attributes);
 
     /**
-     * @param $uuid
+     * @param $id
      */
-    public function delete($uuid);
+    public function delete($id);
 }
