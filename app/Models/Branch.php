@@ -8,11 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Wildside\Userstamps\Userstamps;
 
-class EmployeeType extends Model
+class Branch extends Model
 {
     use HasFactory,  HasUuid, SoftDeletes, Userstamps;
 
-    public $entity = "employeeType";
+    public $entity = "branch";
 
-    public $filters = ["type"];
+    protected $fillable = [
+        'code',
+        'name',
+        'branch_head_id',
+    ];
+
+    public function branchHead()
+    {
+        return $this->belongsTo(Employee::class, 'branch_head_id');
+    }
 }

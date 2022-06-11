@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             EmployeeTypeSeeder::class,
             EmployeeSeeder::class,
+            BranchSeeder::class,
         ]);
     }
 }

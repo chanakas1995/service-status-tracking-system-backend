@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BranchController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\EmployeeTypeController;
 use App\Http\Controllers\RoleController;
@@ -32,4 +33,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::resource('roles', RoleController::class)->only('index');
     Route::resource('employee-types', EmployeeTypeController::class)->only('index');
     Route::resource('employees', EmployeeController::class);
+    Route::resource('branches', BranchController::class);
 });

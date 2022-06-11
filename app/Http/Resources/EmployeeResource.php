@@ -19,6 +19,7 @@ class EmployeeResource extends JsonResource
             'title' => $this->title,
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
+            'name' => $this->name,
             'address' => $this->address,
             'code' => $this->code,
             'nic' => $this->nic,
@@ -27,8 +28,8 @@ class EmployeeResource extends JsonResource
             'mobile' => $this->mobile,
             'work' => $this->work,
             'home' => $this->home,
-            'employee_type_id' => $this->employee_type_id,
             'user' => new UserResource($this->whenLoaded('user')),
+            'employee_type' => new EmployeeTypeResource($this->whenLoaded('employeeType')),
         ];
     }
 }

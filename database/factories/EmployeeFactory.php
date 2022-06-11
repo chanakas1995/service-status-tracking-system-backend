@@ -41,7 +41,7 @@ class EmployeeFactory extends Factory
         $user->syncRoles($role);
 
         return [
-            'title' => $this->faker->numberBetween($gender ? 4 : 1, $gender ? 8 : 3),
+            'title' => $this->faker->numberBetween($gender ? 4 : 1, $gender ? 4 : 3),
             'first_name' => $first_name,
             'last_name' => $last_name,
             'address' => "No." . $this->faker->numberBetween(1, 100) . ' Main Street, Ibbagamuwa',

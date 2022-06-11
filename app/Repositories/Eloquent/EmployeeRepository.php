@@ -23,6 +23,14 @@ class EmployeeRepository extends BaseRepository implements EmployeeRepositoryInt
      */
     public function index()
     {
-        return $this->paginate($this->model->with('user'));
+        $query = $this->model;
+        if (request()->get('employee_type')) {
+            $query = $query->whereHas('employeeType', function ($q) {
+                return $q->where('type', ucwords(str_replace("_", " ", request()->get('employee_type'))));
+            });
+        } else {
+            $query = $query->with('user')->with('employeeType');
+        }
+        return $this->paginate($query);
     }
 }
