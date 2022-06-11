@@ -2,16 +2,12 @@
 
 namespace Tests\Feature;
 
-use App\Models\Permission;
 use App\Models\Role;
 use App\Models\User;
 use Database\Seeders\PermissionSeeder;
 use Database\Seeders\RoleSeeder;
 use Database\Seeders\UserSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\Response;
 use Tests\TestCase;
 
@@ -60,28 +56,18 @@ class UserTest extends TestCase
         $this->seed(RoleSeeder::class);
         $this->seed(UserSeeder::class);
         $this->be(User::first());
-        $user = User::create([
-            "name" => "John Doe",
-            "username" => "john87",
-            "email" => "john@example.com",
-            "roles" => [Role::first()->uuid],
-        ]);
+        $user = User::factory(1)->create()->first();
         $response = $this->get('api/users/' . $user->id);
         $response->assertStatus(Response::HTTP_OK);
     }
-    
+
     public function test_update_user_with_invalid_id()
     {
         $this->seed(PermissionSeeder::class);
         $this->seed(RoleSeeder::class);
         $this->seed(UserSeeder::class);
         $this->be(User::first());
-        $user = User::create([
-            "name" => "John Doe",
-            "username" => "john87",
-            "email" => "john@example.com",
-            "roles" => [Role::first()->uuid],
-        ]);
+        $user = User::factory(1)->create()->first();
         $response = $this->putJson('api/users/54', []);
         $response->assertStatus(Response::HTTP_NOT_FOUND);
     }
@@ -92,12 +78,7 @@ class UserTest extends TestCase
         $this->seed(RoleSeeder::class);
         $this->seed(UserSeeder::class);
         $this->be(User::first());
-        $user = User::create([
-            "name" => "John Doe",
-            "username" => "john87",
-            "email" => "john@example.com",
-            "roles" => [Role::first()->uuid],
-        ]);
+        $user = User::factory(1)->create()->first();
         $response = $this->putJson('api/users/' . $user->id, []);
         $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
     }
@@ -108,12 +89,7 @@ class UserTest extends TestCase
         $this->seed(RoleSeeder::class);
         $this->seed(UserSeeder::class);
         $this->be(User::first());
-        $user = User::create([
-            "name" => "John Doe",
-            "username" => "john87",
-            "email" => "john@example.com",
-            "roles" => [Role::first()->uuid],
-        ]);
+        $user = User::factory(1)->create()->first();
         $response = $this->putJson('api/users/' . $user->id, [
             "name" => "John Doe",
             "username" => "john89",
@@ -139,12 +115,7 @@ class UserTest extends TestCase
         $this->seed(RoleSeeder::class);
         $this->seed(UserSeeder::class);
         $this->be(User::first());
-        $user = User::create([
-            "name" => "John Doe",
-            "username" => "john87",
-            "email" => "john@example.com",
-            "roles" => [Role::first()->uuid],
-        ]);
+        $user = User::factory(1)->create()->first();
         $response = $this->delete('api/users/' . $user->id);
         $response->assertStatus(Response::HTTP_OK);
     }

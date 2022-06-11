@@ -22,7 +22,7 @@ class RoleController extends Controller
      */
     public function index()
     {
-        // $this->authorize('index_roles');
+        $this->authorize('index_roles');
         return ResponseHelper::findSuccess("Roles", RoleResource::collection($this->roleRepository->index()));
     }
 }

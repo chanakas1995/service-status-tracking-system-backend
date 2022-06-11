@@ -18,6 +18,7 @@ return [
 	],
 
 	'entities' => [
+		"employee" => "Employee",
 		"user" => "User"
 	]
 

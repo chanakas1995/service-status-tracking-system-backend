@@ -27,7 +27,7 @@ class UserRequest extends FormRequest
         return [
             "name" => ["required"],
             "username" => ["required", Rule::unique('users')->ignore($this->route('user'), 'id')->withoutTrashed()],
-            "email" => ["required", 'email', Rule::unique('users')->ignore($this->route('user'), 'id')->withoutTrashed()],
+            "email" => ["required", 'email'],
             "roles" => ["required"],
             "image_file" => ["nullable"],
         ];
