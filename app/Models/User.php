@@ -16,7 +16,7 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, HasUuid, HasRoles, SoftDeletes, Userstamps;
 
-    public $entity = "User";
+    public $entity = "user";
 
     protected $guard_name = 'api';
     public $filters = ["name", "username", "email"];
