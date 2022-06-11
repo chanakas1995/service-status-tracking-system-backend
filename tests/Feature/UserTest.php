@@ -4,9 +4,7 @@ namespace Tests\Feature;
 
 use App\Models\Role;
 use App\Models\User;
-use Database\Seeders\PermissionSeeder;
-use Database\Seeders\RoleSeeder;
-use Database\Seeders\UserSeeder;
+use Database\Seeders\DatabaseSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Symfony\Component\HttpFoundation\Response;
 use Tests\TestCase;
@@ -17,9 +15,7 @@ class UserTest extends TestCase
 
     public function test_get_all_users()
     {
-        $this->seed(PermissionSeeder::class);
-        $this->seed(RoleSeeder::class);
-        $this->seed(UserSeeder::class);
+        $this->seed(DatabaseSeeder::class);
         $this->be(User::first());
         $response = $this->get('api/users', []);
         $response->assertStatus(Response::HTTP_OK);
@@ -27,9 +23,7 @@ class UserTest extends TestCase
 
     public function test_create_user_with_invalid_data()
     {
-        $this->seed(PermissionSeeder::class);
-        $this->seed(RoleSeeder::class);
-        $this->seed(UserSeeder::class);
+        $this->seed(DatabaseSeeder::class);
         $this->be(User::first());
         $response = $this->postJson('api/users', []);
         $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
@@ -37,9 +31,7 @@ class UserTest extends TestCase
 
     public function test_create_user_with_valid_data()
     {
-        $this->seed(PermissionSeeder::class);
-        $this->seed(RoleSeeder::class);
-        $this->seed(UserSeeder::class);
+        $this->seed(DatabaseSeeder::class);
         $this->be(User::first());
         $response = $this->postJson('api/users', [
             "name" => "John Doe",
@@ -52,9 +44,7 @@ class UserTest extends TestCase
 
     public function test_view_user()
     {
-        $this->seed(PermissionSeeder::class);
-        $this->seed(RoleSeeder::class);
-        $this->seed(UserSeeder::class);
+        $this->seed(DatabaseSeeder::class);
         $this->be(User::first());
         $user = User::factory(1)->create()->first();
         $response = $this->get('api/users/' . $user->id);
@@ -63,9 +53,7 @@ class UserTest extends TestCase
 
     public function test_update_user_with_invalid_id()
     {
-        $this->seed(PermissionSeeder::class);
-        $this->seed(RoleSeeder::class);
-        $this->seed(UserSeeder::class);
+        $this->seed(DatabaseSeeder::class);
         $this->be(User::first());
         $user = User::factory(1)->create()->first();
         $response = $this->putJson('api/users/54', []);
@@ -74,9 +62,7 @@ class UserTest extends TestCase
 
     public function test_update_user_with_invalid_data()
     {
-        $this->seed(PermissionSeeder::class);
-        $this->seed(RoleSeeder::class);
-        $this->seed(UserSeeder::class);
+        $this->seed(DatabaseSeeder::class);
         $this->be(User::first());
         $user = User::factory(1)->create()->first();
         $response = $this->putJson('api/users/' . $user->id, []);
@@ -85,9 +71,7 @@ class UserTest extends TestCase
 
     public function test_update_user_with_valid_data()
     {
-        $this->seed(PermissionSeeder::class);
-        $this->seed(RoleSeeder::class);
-        $this->seed(UserSeeder::class);
+        $this->seed(DatabaseSeeder::class);
         $this->be(User::first());
         $user = User::factory(1)->create()->first();
         $response = $this->putJson('api/users/' . $user->id, [
@@ -101,9 +85,7 @@ class UserTest extends TestCase
 
     public function test_delete_user_with_invalid_id()
     {
-        $this->seed(PermissionSeeder::class);
-        $this->seed(RoleSeeder::class);
-        $this->seed(UserSeeder::class);
+        $this->seed(DatabaseSeeder::class);
         $this->be(User::first());
         $response = $this->delete('api/users/455');
         $response->assertStatus(Response::HTTP_NOT_FOUND);
@@ -111,9 +93,7 @@ class UserTest extends TestCase
 
     public function test_delete_user_with_valid_id()
     {
-        $this->seed(PermissionSeeder::class);
-        $this->seed(RoleSeeder::class);
-        $this->seed(UserSeeder::class);
+        $this->seed(DatabaseSeeder::class);
         $this->be(User::first());
         $user = User::factory(1)->create()->first();
         $response = $this->delete('api/users/' . $user->id);

@@ -23,6 +23,6 @@ class EmployeeTypeController extends Controller
     public function index()
     {
         $this->authorize('index_employee_types');
-        return ResponseHelper::findSuccess("EmployeeTypes", EmployeeTypeResource::collection($this->employeeTypeRepository->index()));
+        return ResponseHelper::findSuccess("employeeType", EmployeeTypeResource::collection($this->employeeTypeRepository->index()));
     }
 }

@@ -12,6 +12,7 @@ class Employee extends Model
 {
     use HasFactory,  HasUuid, SoftDeletes, Userstamps;
 
+    public $entity = "employee";
 
     public $filters = ["first_name", "last_name", "email"];
 
@@ -44,5 +45,10 @@ class Employee extends Model
     public function employeeType()
     {
         return $this->belongsTo(EmployeeType::class);
+    }
+
+    public function getNameAttribute()
+    {
+        return config('general.titles.' . $this->title) . ' ' . $this->first_name . ' ' . $this->last_name;
     }
 }

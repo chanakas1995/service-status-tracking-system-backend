@@ -15,10 +15,11 @@ use Wildside\Userstamps\Userstamps;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, HasUuid, HasRoles, SoftDeletes, Userstamps;
+    
+    protected $guard_name = 'api';
 
     public $entity = "user";
 
-    protected $guard_name = 'api';
     public $filters = ["name", "username", "email"];
 
     /**

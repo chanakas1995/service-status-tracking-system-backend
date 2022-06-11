@@ -18,7 +18,10 @@ return [
 	],
 
 	'entities' => [
+		"branch" => "Branch",
 		"employee" => "Employee",
+		"employeeType" => "EmployeeType",
+		"role" => "Role",
 		"user" => "User"
 	]
 
