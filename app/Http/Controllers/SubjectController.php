@@ -40,6 +40,7 @@ class SubjectController extends Controller
      */
     public function store(SubjectRequest $request)
     {
+        $this->authorize('store_subject');
         return ResponseHelper::createSuccess("subject", new SubjectResource($this->subjectRepository->store($request->validated())));
     }
 
@@ -65,7 +66,7 @@ class SubjectController extends Controller
      */
     public function update(SubjectRequest $request, Subject $subject)
     {
-
+        $this->authorize('update_subject');
         return ResponseHelper::updateSuccess("subject", new SubjectResource($this->subjectRepository->update($subject->id, $request->validated())));
     }
 

@@ -76,8 +76,7 @@ class EmployeeController extends Controller
     public function show(Employee $employee)
     {
         $this->authorize('show_employee');
-        $employee->load('user');
-        $employee->load('employeeType');
+        $employee->load('user', 'employeeType');
         return ResponseHelper::findSuccess("employee", new EmployeeResource($employee));
     }
 

@@ -44,6 +44,12 @@ return [
             "store_subject",
             "update_subject",
             "destroy_subject",
+
+            "index_gs_offices",
+            "show_gs_office",
+            "store_gs_office",
+            "update_gs_office",
+            "destroy_gs_office",
         ],
         "receptionist_permissions" => [],
         "employee_permissions" => [],

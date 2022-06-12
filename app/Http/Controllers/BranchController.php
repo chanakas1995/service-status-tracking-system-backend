@@ -40,6 +40,7 @@ class BranchController extends Controller
      */
     public function store(BranchRequest $request)
     {
+        $this->authorize('store_branch');
         return ResponseHelper::createSuccess("branch", new BranchResource($this->branchRepository->store($request->validated())));
     }
 
@@ -65,7 +66,7 @@ class BranchController extends Controller
      */
     public function update(BranchRequest $request, Branch $branch)
     {
-
+        $this->authorize('update_branch');
         return ResponseHelper::updateSuccess("branch", new BranchResource($this->branchRepository->update($branch->id, $request->validated())));
     }
 
