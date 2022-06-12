@@ -22,6 +22,7 @@ return [
 		"employee" => "Employee",
 		"employeeType" => "EmployeeType",
 		"role" => "Role",
+		"subject" => "Subject",
 		"user" => "User"
 	]
 

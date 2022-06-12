@@ -38,6 +38,12 @@ return [
             "store_branch",
             "update_branch",
             "destroy_branch",
+
+            "index_subjects",
+            "show_subject",
+            "store_subject",
+            "update_subject",
+            "destroy_subject",
         ],
         "receptionist_permissions" => [],
         "employee_permissions" => [],
