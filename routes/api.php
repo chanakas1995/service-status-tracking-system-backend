@@ -5,6 +5,7 @@ use App\Http\Controllers\BranchController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\EmployeeTypeController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -34,4 +35,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::resource('employee-types', EmployeeTypeController::class)->only('index');
     Route::resource('employees', EmployeeController::class);
     Route::resource('branches', BranchController::class);
+    Route::resource('subjects', SubjectController::class);
 });
