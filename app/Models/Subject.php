@@ -14,6 +14,8 @@ class Subject extends Model
 
     public $entity = "subject";
 
+    public $filters = ["name", "code"];
+
     protected $fillable = [
         'code',
         'name',

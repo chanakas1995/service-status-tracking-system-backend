@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             BranchSeeder::class,
             SubjectSeeder::class,
             GsOfficeSeeder::class,
+            ServiceTypeSeeder::class,
         ]);
     }
 }

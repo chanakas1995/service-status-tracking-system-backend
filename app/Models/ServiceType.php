@@ -8,30 +8,22 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Wildside\Userstamps\Userstamps;
 
-class GsOffice extends Model
+class ServiceType extends Model
 {
     use HasFactory,  HasUuid, SoftDeletes, Userstamps;
 
     public $entity = "gsOffice";
 
-    public $filters = ["name", "code"];
+    public $filters = ["service_type", "code"];
 
     protected $fillable = [
         'code',
-        'name',
-        'address',
-        'phone',
-        'gs_acting_id',
-        'gs_permanent_id',
+        'service_type',
+        'initial_subject_id',
     ];
 
-    public function gsActing()
+    public function initialSubject()
     {
-        return $this->belongsTo(Employee::class, 'gs_acting_id');
-    }
-
-    public function gsPermanent()
-    {
-        return $this->belongsTo(Employee::class, 'gs_permanent_id');
+        return $this->belongsTo(Subject::class, 'initial_subject_id');
     }
 }
