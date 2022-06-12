@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             EmployeeSeeder::class,
             BranchSeeder::class,
             SubjectSeeder::class,
+            GsOfficeSeeder::class,
         ]);
     }
 }

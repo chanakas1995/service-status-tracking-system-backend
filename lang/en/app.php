@@ -20,7 +20,8 @@ return [
 	'entities' => [
 		"branch" => "Branch",
 		"employee" => "Employee",
-		"employeeType" => "EmployeeType",
+		"employeeType" => "Employee type",
+		"gsOffice" => "GS office",
 		"role" => "Role",
 		"subject" => "Subject",
 		"user" => "User"
