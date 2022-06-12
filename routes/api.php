@@ -6,6 +6,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\EmployeeTypeController;
 use App\Http\Controllers\GsOfficeController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\ServiceTypeController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -38,4 +39,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::resource('branches', BranchController::class);
     Route::resource('subjects', SubjectController::class);
     Route::resource('gs-offices', GsOfficeController::class);
+    Route::resource('service-types', ServiceTypeController::class);
 });

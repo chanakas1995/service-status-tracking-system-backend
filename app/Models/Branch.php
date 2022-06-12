@@ -14,6 +14,8 @@ class Branch extends Model
 
     public $entity = "branch";
 
+    public $filters = ["name", "code"];
+
     protected $fillable = [
         'code',
         'name',

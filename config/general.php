@@ -50,6 +50,12 @@ return [
             "store_gs_office",
             "update_gs_office",
             "destroy_gs_office",
+
+            "index_service_types",
+            "show_service_type",
+            "store_service_type",
+            "update_service_type",
+            "destroy_service_type",
         ],
         "receptionist_permissions" => [],
         "employee_permissions" => [],
