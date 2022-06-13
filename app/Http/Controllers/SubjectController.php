@@ -7,18 +7,15 @@ use App\Http\Requests\SubjectRequest;
 use App\Http\Resources\SubjectResource;
 use App\Models\Subject;
 use App\Repositories\Contracts\SubjectRepositoryInterface;
-use App\Repositories\contracts\UserRepositoryInterface;
 use Illuminate\Http\Request;
 
 class SubjectController extends Controller
 {
-    private $userRepository;
     private $subjectRepository;
 
-    public function __construct(SubjectRepositoryInterface $subjectRepository, UserRepositoryInterface $userRepository)
+    public function __construct(SubjectRepositoryInterface $subjectRepository)
     {
         $this->subjectRepository = $subjectRepository;
-        $this->userRepository = $userRepository;
     }
 
     /**

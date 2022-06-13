@@ -7,18 +7,15 @@ use App\Http\Requests\GsOfficeRequest;
 use App\Http\Resources\GsOfficeResource;
 use App\Models\GsOffice;
 use App\Repositories\Contracts\GsOfficeRepositoryInterface;
-use App\Repositories\contracts\UserRepositoryInterface;
 use Illuminate\Http\Request;
 
 class GsOfficeController extends Controller
 {
-    private $userRepository;
     private $gsOfficeRepository;
 
-    public function __construct(GsOfficeRepositoryInterface $gsOfficeRepository, UserRepositoryInterface $userRepository)
+    public function __construct(GsOfficeRepositoryInterface $gsOfficeRepository)
     {
         $this->gsOfficeRepository = $gsOfficeRepository;
-        $this->userRepository = $userRepository;
     }
 
     /**

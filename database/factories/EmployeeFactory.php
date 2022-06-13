@@ -50,7 +50,7 @@ class EmployeeFactory extends Factory
             'first_name' => $first_name,
             'last_name' => $last_name,
             'address' => "No." . $this->faker->numberBetween(1, 100) . ' Main Street, Ibbagamuwa',
-            'code' => str_pad($this->faker->numberBetween(1, 100), 3, 0, STR_PAD_LEFT),
+            'code' => "E" .str_pad($this->faker->numberBetween(1, 100), 3, 0, STR_PAD_LEFT),
             'nic' => Carbon::parse($dateOfBirth)->format('y') . str_pad($nicDates, 3, 0, STR_PAD_LEFT) . $this->faker->numberBetween(1111, 9999) . "V",
             'date_of_birth' => $dateOfBirth->format('Y-m-d'),
             'gender' => $gender ? 1 : 2,

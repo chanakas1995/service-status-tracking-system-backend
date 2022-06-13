@@ -19,7 +19,7 @@ class ServiceTypeFactory extends Factory
     {
         return [
             'service_type' => $this->faker->sentence(3),
-            'code' => str_pad($this->faker->numberBetween(1, 100), 3, 0, STR_PAD_LEFT),
+            'code' => "ST" .str_pad($this->faker->numberBetween(1, 100), 3, 0, STR_PAD_LEFT),
             'initial_subject_id' => Subject::all()->random()->id,
         ];
     }
