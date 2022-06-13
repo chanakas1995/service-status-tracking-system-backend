@@ -15,6 +15,6 @@ class GsOfficeSeeder extends Seeder
      */
     public function run()
     {
-        GsOffice::factory(10)->create();
+        GsOffice::factory(5)->create();
     }
 }

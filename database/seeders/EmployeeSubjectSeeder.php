@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\ServiceType;
+use App\Models\EmployeeSubject;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class ServiceTypeSeeder extends Seeder
+class EmployeeSubjectSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,7 +14,7 @@ class ServiceTypeSeeder extends Seeder
      * @return void
      */
     public function run()
-    {        
-        ServiceType::factory(10)->create();
+    {
+        EmployeeSubject::factory(30)->create();
     }
 }

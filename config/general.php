@@ -56,6 +56,12 @@ return [
             "store_service_type",
             "update_service_type",
             "destroy_service_type",
+
+            "index_employee_subjects",
+            "show_employee_subject",
+            "store_employee_subject",
+            "update_employee_subject",
+            "destroy_employee_subject",
         ],
         "receptionist_permissions" => [            
             "index_gs_offices",

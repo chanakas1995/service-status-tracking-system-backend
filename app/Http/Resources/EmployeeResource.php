@@ -30,6 +30,7 @@ class EmployeeResource extends JsonResource
             'home' => $this->home,
             'user' => new UserResource($this->whenLoaded('user')),
             'employee_type' => new EmployeeTypeResource($this->whenLoaded('employeeType')),
+            'employee_subjects' => EmployeeSubjectResource::collection($this->whenLoaded('employeeSubjects')),
         ];
     }
 }
