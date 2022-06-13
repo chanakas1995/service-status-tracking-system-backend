@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             SubjectSeeder::class,
             GsOfficeSeeder::class,
             ServiceTypeSeeder::class,
+            CustomerSeeder::class,
         ]);
     }
 }
