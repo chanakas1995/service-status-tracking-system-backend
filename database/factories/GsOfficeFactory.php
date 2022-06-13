@@ -19,7 +19,7 @@ class GsOfficeFactory extends Factory
     {
         return [
             'name' => ucfirst($this->faker->word()),
-            'code' => "E".str_pad($this->faker->numberBetween(1,300), 3, 0, STR_PAD_LEFT),
+            'code' => "E" . str_pad($this->faker->numberBetween(1, 300), 3, 0, STR_PAD_LEFT),
             'address' => "No." . $this->faker->numberBetween(1, 100) . ' Main Street, Ibbagamuwa',
             'phone' => "35" . $this->faker->numberBetween(1111111, 9999999),
             'gs_acting_id' => Employee::whereHas(('employeeType'), function ($query) {

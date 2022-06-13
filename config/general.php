@@ -71,6 +71,12 @@ return [
             "store_customer",
             "update_customer",
             "destroy_customer",
+
+            "index_service_requests",
+            "show_service_request",
+            "store_service_request",
+            "update_service_request",
+            "destroy_service_request",
         ],
         "employee_permissions" => [],
         "customer_permissions" => [],

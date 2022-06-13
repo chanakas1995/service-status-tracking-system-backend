@@ -7,18 +7,15 @@ use App\Http\Requests\ServiceTypeRequest;
 use App\Http\Resources\ServiceTypeResource;
 use App\Models\ServiceType;
 use App\Repositories\Contracts\ServiceTypeRepositoryInterface;
-use App\Repositories\contracts\UserRepositoryInterface;
 use Illuminate\Http\Request;
 
 class ServiceTypeController extends Controller
 {
-    private $userRepository;
     private $serviceTypeRepository;
 
-    public function __construct(ServiceTypeRepositoryInterface $serviceTypeRepository, UserRepositoryInterface $userRepository)
+    public function __construct(ServiceTypeRepositoryInterface $serviceTypeRepository)
     {
         $this->serviceTypeRepository = $serviceTypeRepository;
-        $this->userRepository = $userRepository;
     }
 
     /**

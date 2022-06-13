@@ -20,7 +20,7 @@ class SubjectFactory extends Factory
     {
         return [
             'name' => $this->faker->sentence(4),
-            'code' => str_pad($this->faker->numberBetween(1, 100), 3, 0, STR_PAD_LEFT),
+            'code' => "S" .str_pad($this->faker->numberBetween(1, 100), 3, 0, STR_PAD_LEFT),
             'branch_id' => Branch::all()->random()->id,
         ];
     }

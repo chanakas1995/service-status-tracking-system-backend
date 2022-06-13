@@ -7,18 +7,15 @@ use App\Http\Requests\BranchRequest;
 use App\Http\Resources\BranchResource;
 use App\Models\Branch;
 use App\Repositories\Contracts\BranchRepositoryInterface;
-use App\Repositories\contracts\UserRepositoryInterface;
 use Illuminate\Http\Request;
 
 class BranchController extends Controller
 {
-    private $userRepository;
     private $branchRepository;
 
-    public function __construct(BranchRepositoryInterface $branchRepository, UserRepositoryInterface $userRepository)
+    public function __construct(BranchRepositoryInterface $branchRepository)
     {
         $this->branchRepository = $branchRepository;
-        $this->userRepository = $userRepository;
     }
 
     /**

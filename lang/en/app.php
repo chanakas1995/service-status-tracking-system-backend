@@ -25,6 +25,7 @@ return [
 		"employeeType" => "Employee type",
 		"gsOffice" => "GS office",
 		"role" => "Role",
+		"serviceRequest" => "Service request",
 		"serviceType" => "Service Type",
 		"subject" => "Subject",
 		"user" => "User"
