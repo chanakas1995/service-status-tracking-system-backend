@@ -7,6 +7,8 @@ use App\Models\Role;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Customer>
@@ -30,6 +32,9 @@ class CustomerFactory extends Factory
         $nicDates = Carbon::parse($dateOfBirth)->setYear(2020)->dayOfYear();
         if (!$gender) {
             $nicDates += 500;
+        }
+        if (App::runningUnitTests()) {
+            $username .= Str::random(10);
         }
 
         $user = User::create([

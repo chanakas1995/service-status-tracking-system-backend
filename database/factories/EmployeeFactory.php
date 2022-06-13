@@ -7,6 +7,8 @@ use App\Models\Role;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Employee>
@@ -31,6 +33,9 @@ class EmployeeFactory extends Factory
         if (!$gender) {
             $nicDates += 500;
         }
+        if (App::runningUnitTests()) {
+            $username .= Str::random(10);
+        }
 
         $user = User::create([
             "name" => $first_name . " " . $last_name,
@@ -46,7 +51,7 @@ class EmployeeFactory extends Factory
             'last_name' => $last_name,
             'address' => "No." . $this->faker->numberBetween(1, 100) . ' Main Street, Ibbagamuwa',
             'code' => str_pad($this->faker->numberBetween(1, 100), 3, 0, STR_PAD_LEFT),
-            'nic' => Carbon::parse($dateOfBirth)->format('y') . str_pad($nicDates, 3, 0, STR_PAD_LEFT) . $this->faker->numberBetween(1111, 9999)."V",
+            'nic' => Carbon::parse($dateOfBirth)->format('y') . str_pad($nicDates, 3, 0, STR_PAD_LEFT) . $this->faker->numberBetween(1111, 9999) . "V",
             'date_of_birth' => $dateOfBirth->format('Y-m-d'),
             'gender' => $gender ? 1 : 2,
             'mobile' => "71" . $this->faker->numberBetween(1111111, 9999999),

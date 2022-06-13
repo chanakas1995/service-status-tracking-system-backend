@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Str;
 
 /**
@@ -19,8 +20,12 @@ class UserFactory extends Factory
      */
     public function definition()
     {
+        $username = $this->faker->name();
+        if (App::runningUnitTests()) {
+            $username .= Str::random(10);
+        }
         return [
-            'name' => $this->faker->name(),
+            'name' => $username,
             'username' => str_replace(" ", "", $this->faker->userName()),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
