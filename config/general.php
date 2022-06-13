@@ -57,7 +57,15 @@ return [
             "update_service_type",
             "destroy_service_type",
         ],
-        "receptionist_permissions" => [],
+        "receptionist_permissions" => [            
+            "index_gs_offices",
+
+            "index_customers",
+            "show_customer",
+            "store_customer",
+            "update_customer",
+            "destroy_customer",
+        ],
         "employee_permissions" => [],
         "customer_permissions" => [],
         "management_staff_permissions" => [],
