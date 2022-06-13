@@ -15,6 +15,6 @@ class SubjectSeeder extends Seeder
      */
     public function run()
     {
-        Subject::factory(20)->create();
+        Subject::factory(40)->create();
     }
 }
