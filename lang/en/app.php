@@ -21,6 +21,7 @@ return [
 		"branch" => "Branch",
 		"customer" => "Customer",
 		"employee" => "Employee",
+		"employeeSubject" => "Employee subject",
 		"employeeType" => "Employee type",
 		"gsOffice" => "GS office",
 		"role" => "Role",

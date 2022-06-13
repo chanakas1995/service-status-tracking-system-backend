@@ -47,6 +47,11 @@ class Employee extends Model
         return $this->belongsTo(EmployeeType::class);
     }
 
+    public function employeeSubjects()
+    {
+        return $this->hasMany(EmployeeSubject::class);
+    }
+
     public function getNameAttribute()
     {
         return config('general.titles.' . $this->title) . ' ' . $this->first_name . ' ' . $this->last_name;
