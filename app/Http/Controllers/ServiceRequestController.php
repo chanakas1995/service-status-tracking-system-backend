@@ -10,6 +10,7 @@ use App\Notifications\CreateServiceRequestNotification;
 use App\Repositories\Contracts\CustomerRepositoryInterface;
 use App\Repositories\Contracts\ServiceRequestRepositoryInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class ServiceRequestController extends Controller
 {
@@ -48,7 +49,9 @@ class ServiceRequestController extends Controller
         $number = ServiceRequest::withTrashed()->count() + 1;
         $serviceRequest->update(["number" => $number]);
         $customer = $this->customerRepository->find($request->get('customer_id'));
-        $customer->user->notify(new CreateServiceRequestNotification($serviceRequest));
+        if (!App::runningUnitTests()) {
+            $customer->user->notify(new CreateServiceRequestNotification($serviceRequest));
+        }
         return ResponseHelper::createSuccess("serviceRequest", new ServiceRequestResource($serviceRequest));
     }
 
