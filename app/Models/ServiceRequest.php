@@ -24,6 +24,7 @@ class ServiceRequest extends Model
         'end_date',
         'service_type_id',
         'customer_id',
+        'duration',
         'notes',
     ];
 
@@ -44,4 +45,9 @@ class ServiceRequest extends Model
         $branch = $initialSubject->branch;
         return $branch->code . "-" . $initialSubject->code . "-" . $serviceType->code . "-" . str_pad($this->number, 5, "0", STR_PAD_LEFT);
     }
+
+    // function getStatusAttribute()
+    // {
+    //     $lastEnrollment = $this->enrollments;
+    // }
 }

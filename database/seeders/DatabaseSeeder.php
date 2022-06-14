@@ -23,10 +23,11 @@ class DatabaseSeeder extends Seeder
             BranchSeeder::class,
             SubjectSeeder::class,
             GsOfficeSeeder::class,
+            EmployeeSubjectSeeder::class,
             ServiceTypeSeeder::class,
             CustomerSeeder::class,
-            EmployeeSubjectSeeder::class,
             ServiceRequestSeeder::class,
+            EnrollmentSeeder::class,
         ]);
     }
 }

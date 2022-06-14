@@ -8,18 +8,25 @@ use App\Http\Resources\ServiceRequestResource;
 use App\Models\ServiceRequest;
 use App\Notifications\CreateServiceRequestNotification;
 use App\Repositories\Contracts\CustomerRepositoryInterface;
+use App\Repositories\Contracts\EnrollmentRepositoryInterface;
 use App\Repositories\Contracts\ServiceRequestRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\DB;
 
 class ServiceRequestController extends Controller
 {
     private $serviceRequestRepository;
     private $customerRepository;
+    private $enrollmentRepository;
 
-    public function __construct(ServiceRequestRepositoryInterface $serviceRequestRepository, CustomerRepositoryInterface $customerRepository)
-    {
+    public function __construct(
+        ServiceRequestRepositoryInterface $serviceRequestRepository,
+        EnrollmentRepositoryInterface $enrollmentRepository,
+        CustomerRepositoryInterface $customerRepository
+    ) {
         $this->serviceRequestRepository = $serviceRequestRepository;
+        $this->enrollmentRepository = $enrollmentRepository;
         $this->customerRepository = $customerRepository;
     }
 
@@ -43,16 +50,34 @@ class ServiceRequestController extends Controller
     public function store(ServiceRequestRequest $request)
     {
         $this->authorize('store_service_request');
-        $data = $request->validated();
-        $data["start_date"] = now()->toDateTimeString();
-        $serviceRequest = $this->serviceRequestRepository->store($data);
-        $number = ServiceRequest::withTrashed()->count() + 1;
-        $serviceRequest->update(["number" => $number]);
-        $customer = $this->customerRepository->find($request->get('customer_id'));
-        if (!App::runningUnitTests()) {
-            $customer->user->notify(new CreateServiceRequestNotification($serviceRequest));
+        try {
+            DB::beginTransaction();
+            $data = $request->validated();
+            $serviceRequest = $this->serviceRequestRepository->store($data);
+            $subject = $serviceRequest->serviceType->initialSubject;
+            $employeeSubjects = $subject->employeeSubjects;
+            $enrollmentData = [
+                "service_request_id" => $serviceRequest->id,
+                "subject_id" => $subject->id,
+                "employee_id" => $employeeSubjects->count() === 1 ? $employeeSubjects->first()->employee_id : null,
+                "start_date" => $employeeSubjects->count() === 1 ? now()->toDateTimeString() : null,
+                "transferred_date" => now()->toDateTimeString(),
+            ];
+            if ($employeeSubjects->count() === 1) {
+                $serviceRequest = $this->serviceRequestRepository->update($serviceRequest->id, ["start_date" => now()->toDateTimeString()]);
+            }
+            $this->enrollmentRepository->store($enrollmentData);
+            $number = ServiceRequest::withTrashed()->count() + 1;
+            $serviceRequest->update(["number" => $number]);
+            $customer = $this->customerRepository->find($request->get('customer_id'));
+            if (!App::runningUnitTests()) {
+                $customer->user->notify(new CreateServiceRequestNotification($serviceRequest));
+            }
+            return ResponseHelper::createSuccess("serviceRequest", new ServiceRequestResource($serviceRequest));
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            throw $th;
         }
-        return ResponseHelper::createSuccess("serviceRequest", new ServiceRequestResource($serviceRequest));
     }
 
     /**

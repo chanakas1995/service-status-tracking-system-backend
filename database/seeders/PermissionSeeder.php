@@ -43,5 +43,9 @@ class PermissionSeeder extends Seeder
 
         Permission::destroy(Permission::all()->pluck('id'));
         Permission::insert($data->toArray());
+
+        foreach (Role::whereNot('name', 'Super Admin')->get() as $role) {
+            $role->syncPermissions(config('general.permissions.' . str_replace(" ", "_", strtolower($role->name)) . '_permissions'));
+        }
     }
 }

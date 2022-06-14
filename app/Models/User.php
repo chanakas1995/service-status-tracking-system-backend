@@ -15,7 +15,7 @@ use Wildside\Userstamps\Userstamps;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, HasUuid, HasRoles, SoftDeletes, Userstamps;
-    
+
     protected $guard_name = 'api';
 
     public $entity = "user";
@@ -53,9 +53,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    
+
     public function customer()
     {
         return $this->hasOne(Customer::class);
+    }
+
+    public function employee()
+    {
+        return $this->hasOne(Employee::class);
     }
 }

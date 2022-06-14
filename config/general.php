@@ -63,7 +63,7 @@ return [
             "update_employee_subject",
             "destroy_employee_subject",
         ],
-        "receptionist_permissions" => [            
+        "receptionist_permissions" => [
             "index_gs_offices",
 
             "index_customers",
@@ -78,7 +78,13 @@ return [
             "update_service_request",
             "destroy_service_request",
         ],
-        "employee_permissions" => [],
+        "employee_permissions" => [
+            "show_service_request",
+            "create_enrollment",
+            "update_enrollment",
+            "view_new_service_requests",
+            "index_enrollments",
+        ],
         "customer_permissions" => [],
         "management_staff_permissions" => [],
     ]

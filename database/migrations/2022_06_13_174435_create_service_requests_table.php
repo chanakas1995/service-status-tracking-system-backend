@@ -14,11 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('service_requests', function (Blueprint $table) {
-            $table->uuid('id');
+            $table->uuid('id')->primary();
             $table->integer('number')->nullable();
             $table->text('description');
-            $table->dateTime('start_date');
+            $table->dateTime('start_date')->nullable();
             $table->dateTime('end_date')->nullable();
+            $table->integer('duration')->nullable();
             $table->uuid('service_type_id');
             $table->uuid('customer_id');
             $table->text('notes')->nullable();

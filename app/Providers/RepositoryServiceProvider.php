@@ -7,6 +7,7 @@ use App\Repositories\Contracts\CustomerRepositoryInterface;
 use App\Repositories\Contracts\EmployeeRepositoryInterface;
 use App\Repositories\Contracts\EmployeeSubjectRepositoryInterface;
 use App\Repositories\Contracts\EmployeeTypeRepositoryInterface;
+use App\Repositories\Contracts\EnrollmentRepositoryInterface;
 use App\Repositories\Contracts\GsOfficeRepositoryInterface;
 use App\Repositories\Contracts\RoleRepositoryInterface;
 use App\Repositories\Contracts\ServiceRequestRepositoryInterface;
@@ -18,6 +19,7 @@ use App\Repositories\Eloquent\CustomerRepository;
 use App\Repositories\Eloquent\EmployeeRepository;
 use App\Repositories\Eloquent\EmployeeSubjectRepository;
 use App\Repositories\Eloquent\EmployeeTypeRepository;
+use App\Repositories\Eloquent\EnrollmentRepository;
 use App\Repositories\Eloquent\GsOfficeRepository;
 use App\Repositories\Eloquent\RoleRepository;
 use App\Repositories\Eloquent\ServiceRequestRepository;
@@ -56,5 +58,6 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(CustomerRepositoryInterface::class, CustomerRepository::class);
         $this->app->bind(EmployeeSubjectRepositoryInterface::class, EmployeeSubjectRepository::class);
         $this->app->bind(ServiceRequestRepositoryInterface::class, ServiceRequestRepository::class);
+        $this->app->bind(EnrollmentRepositoryInterface::class, EnrollmentRepository::class);
     }
 }

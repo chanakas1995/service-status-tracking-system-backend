@@ -6,6 +6,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\EmployeeSubjectController;
 use App\Http\Controllers\EmployeeTypeController;
+use App\Http\Controllers\EnrollmentController;
 use App\Http\Controllers\GsOfficeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ServiceRequestController;
@@ -46,4 +47,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::resource('customers', CustomerController::class);
     Route::resource('employees.employee-subjects', EmployeeSubjectController::class);
     Route::resource('service-requests', ServiceRequestController::class);
+    Route::resource('enrollments', EnrollmentController::class);
 });
