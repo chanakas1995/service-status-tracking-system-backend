@@ -43,7 +43,7 @@ class CreateAccountNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject("Welcome to service status tracking system of Divisional Secretariat Ibbagamuwa")
+            ->subject("Welcome to System")
             ->greeting("Hello " . $notifiable->name . ",")
             ->line('Please use the following password to log in to the system.')
             ->line('Password : ' . $this->password)

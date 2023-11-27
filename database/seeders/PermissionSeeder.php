@@ -22,10 +22,8 @@ class PermissionSeeder extends Seeder
         $allPermissions = array_unique(
             array_merge(
                 config('general.permissions.system_admin_permissions'),
-                config('general.permissions.receptionist_permissions'),
-                config('general.permissions.employee_permissions'),
-                config('general.permissions.customer_permissions'),
-                config('general.permissions.management_staff_permissions')
+                config('general.permissions.system_user_permissions'),
+                config('general.permissions.system_manager_permissions'),
             ),
             SORT_REGULAR
         );

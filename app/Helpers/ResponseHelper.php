@@ -144,7 +144,7 @@ class ResponseHelper
      * @return JsonResponse response
      */
     public static function unauthorized()
-    {
+    {  
         return response()->json(ResponseHelper::processData(trans('app.responses.forbidden'), null), Response::HTTP_FORBIDDEN);
     }
 }

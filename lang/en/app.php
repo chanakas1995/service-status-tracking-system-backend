@@ -28,7 +28,10 @@ return [
 		"serviceRequest" => "Service request",
 		"serviceType" => "Service Type",
 		"subject" => "Subject",
-		"user" => "User"
+		"user" => "User",
+		"bus" => "bus",
+		"busModels" => "Bus Models",
+		"list" => "Data list"
 	]
 
 ];

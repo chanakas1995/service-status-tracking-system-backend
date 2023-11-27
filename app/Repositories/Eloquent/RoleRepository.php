@@ -34,6 +34,6 @@ class RoleRepository extends BaseRepository implements RoleRepositoryInterface
      */
     public function index()
     {
-        return $this->model->whereNotIn('name', ["Super Admin", "Employee", "Customer"])->get();
+        return $this->model->whereNotIn('name', ["Super Admin"])->get();
     }
 }

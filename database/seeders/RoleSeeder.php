@@ -19,10 +19,9 @@ class RoleSeeder extends Seeder
         $roles = [
             "Super Admin",
             "System Admin",
-            "Receptionist",
-            "Employee",
-            "Customer",
-            "Management Staff",
+            "System User",
+            "System Manager",
+            
         ];
 
         Role::destroy(Role::all()->pluck('id'));
@@ -35,7 +34,7 @@ class RoleSeeder extends Seeder
             if ($role->name == "Super Admin") {
                 $role->syncPermissions(Permission::all());
             } else {
-                $role->syncPermissions(config('general.permissions.' . strtolower(str_replace(" ", "_", $role)) . '_permissions'));
+                $role->syncPermissions(config('general.permissions.' . strtolower(str_replace(" ", "_", $role->name)) . '_permissions'));
             }
         }
     }

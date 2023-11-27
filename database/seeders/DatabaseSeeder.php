@@ -18,15 +18,11 @@ class DatabaseSeeder extends Seeder
             PermissionSeeder::class,
             RoleSeeder::class,
             UserSeeder::class,
-            EmployeeTypeSeeder::class,
-            EmployeeSeeder::class,
-            BranchSeeder::class,
-            SubjectSeeder::class,
-            GsOfficeSeeder::class,
-            ServiceTypeSeeder::class,
-            CustomerSeeder::class,
-            EmployeeSubjectSeeder::class,
-            ServiceRequestSeeder::class,
+            BusModelSeeder::class,
+            BusSeeder::class,
+            LocationSeeder::class,
+            RouteSeeder::class,
+            TripSeeder::class,
         ]);
     }
 }

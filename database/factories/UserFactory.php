@@ -56,7 +56,7 @@ class UserFactory extends Factory
     public function configure()
     {
         return $this->afterCreating(function (User $user) {
-            $user->assignRole(Role::whereNotIn('name', ["Super Admin", "Employee", "Customer"])->get()->random());
+            $user->assignRole(Role::whereNotIn('name', ["Super Admin"])->get()->random());
         });
     }
 }

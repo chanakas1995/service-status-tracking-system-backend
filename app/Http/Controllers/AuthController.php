@@ -25,8 +25,8 @@ class AuthController extends Controller
     }
 
     public function login(LoginRequest $request)
-    {
-        $this->userRepository->findByUsername($request->get('username'));
+    { 
+     
         if (Auth::attempt($request->validated())) {
             return ResponseHelper::success("app.responses.loginSuccess", [
                 "user" => new UserResource(Auth::user()->load('roles', 'roles.permissions')),

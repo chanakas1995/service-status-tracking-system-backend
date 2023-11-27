@@ -16,6 +16,7 @@ return [
         "8" => "Ven.",
     ],
 
+
     "permissions" => [
         "system_admin_permissions" => [
             'index_roles',
@@ -27,59 +28,54 @@ return [
             "update_user",
             "destroy_user",
 
-            "index_employees",
-            "show_employee",
-            "store_employee",
-            "update_employee",
-            "destroy_employee",
+            "index_buses",
+            "show_bus",
+            "store_bus",
+            "update_bus",
+            "destroy_bus",
 
-            "index_branches",
-            "show_branch",
-            "store_branch",
-            "update_branch",
-            "destroy_branch",
+            "index_bus_models",
+            "show_bus_model",
+            "store_bus_model",
+            "update_bus_model",
+            "destroy_bus_model",
 
-            "index_subjects",
-            "show_subject",
-            "store_subject",
-            "update_subject",
-            "destroy_subject",
+            "index_routes",
+            "show_route",
+            "store_route",
+            "update_route",
+            "destroy_route",
 
-            "index_gs_offices",
-            "show_gs_office",
-            "store_gs_office",
-            "update_gs_office",
-            "destroy_gs_office",
+            "index_locations",
+            "show_location",
+            "store_location",
+            "update_location",
+            "destroy_location",
 
-            "index_service_types",
-            "show_service_type",
-            "store_service_type",
-            "update_service_type",
-            "destroy_service_type",
+            "index_trips",
+            "show_trip",
+            "store_trip",
+            "update_trip",
+            "destroy_trip",
 
-            "index_employee_subjects",
-            "show_employee_subject",
-            "store_employee_subject",
-            "update_employee_subject",
-            "destroy_employee_subject",
+            "index_reports",
+            "download_trip_report",
         ],
-        "receptionist_permissions" => [            
-            "index_gs_offices",
-
-            "index_customers",
-            "show_customer",
-            "store_customer",
-            "update_customer",
-            "destroy_customer",
-
-            "index_service_requests",
-            "show_service_request",
-            "store_service_request",
-            "update_service_request",
-            "destroy_service_request",
+        "system_user_permissions" => [            
+            
+            "index_trips",
+            "show_trip",
+            "store_trip",
+            "update_trip",
+       
         ],
-        "employee_permissions" => [],
-        "customer_permissions" => [],
-        "management_staff_permissions" => [],
+        "system_manager_permissions" => [            
+            
+            "index_reports",
+            "download_trip_report",
+       
+        ],
+        
+
     ]
 ];

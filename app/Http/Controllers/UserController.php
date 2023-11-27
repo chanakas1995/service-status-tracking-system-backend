@@ -57,7 +57,7 @@ class UserController extends Controller
             $user = $this->userRepository->store($data);
             $roles = $this->roleRepository->findByIds([$request->get('roles')]);
             $user->syncRoles($roles);
-            $user->notify(new CreateAccountNotification($password));
+            //$user->notify(new CreateAccountNotification($password));
             DB::commit();
             return ResponseHelper::createSuccess("user", new UserResource($user));
         } catch (\Throwable $th) {
